@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Undangan Edu Fair & Career Day 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Poppins', sans-serif; color: #333; line-height: 1.6; background: #f5f5f5; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+
+        /* HERO */
+        .hero {
+            min-height: 100vh;
+            background-color: #1a1a2e;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 40px 20px;
+        }
+        .hero-content { max-width: 700px; }
+        .hero-subtitle { letter-spacing: 3px; text-transform: uppercase; font-size: 0.9rem; color: #cccccc; margin-bottom: 15px; }
+        .guest-name { font-family: 'Playfair Display', serif; font-size: 2.5rem; color: #c9a961; margin-bottom: 10px; }
+        .guest-instansi { font-size: 1rem; color: #ffffff; margin-bottom: 5px; }
+        .guest-category { font-size: 0.9rem; color: #cccccc; font-style: italic; margin-bottom: 20px; }
+        .divider { display: flex; align-items: center; justify-content: center; gap: 15px; margin: 25px 0; }
+        .divider span { width: 80px; height: 2px; background: #c9a961; }
+        .divider i { color: #c9a961; font-size: 1.3rem; }
+        .event-title { font-family: 'Playfair Display', serif; font-size: 2rem; color: white; margin-bottom: 10px; }
+        .event-theme { font-size: 0.95rem; color: #dddddd; font-style: italic; margin-bottom: 30px; }
+        .btn-scroll { display: inline-block; padding: 12px 30px; border: 2px solid #c9a961; color: #c9a961; text-decoration: none; border-radius: 50px; transition: all 0.3s; }
+        .btn-scroll:hover { background: #c9a961; color: #1a1a2e; }
+
+        /* SECTIONS */
+        section { padding: 70px 0; }
+        .section-title { font-family: 'Playfair Display', serif; font-size: 2rem; text-align: center; color: #1a1a2e; margin-bottom: 40px; }
+        .section-title.light { color: white; }
+
+        /* INFO CARDS */
+        .info-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px; }
+        .info-card { background: white; padding: 30px 20px; border-radius: 15px; text-align: center; box-shadow: 0 5px 20px rgba(0,0,0,0.08); transition: transform 0.3s; }
+        .info-card:hover { transform: translateY(-5px); }
+        .info-card i { font-size: 2rem; color: #c9a961; margin-bottom: 15px; }
+        .info-card h3 { color: #1a1a2e; margin-bottom: 10px; }
+        .info-card p { color: #666; font-size: 0.95rem; }
+
+        /* LOKASI */
+        .lokasi { background: white; }
+        .lokasi .container { text-align: center; }
+        .map-container { border-radius: 15px; overflow: hidden; box-shadow: 0 5px 20px rgba(0,0,0,0.1); margin-bottom: 20px; }
+        .btn-map { display: inline-block; padding: 12px 30px; background: #1a1a2e; color: white; text-decoration: none; border-radius: 50px; transition: all 0.3s; }
+        .btn-map:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
+
+        /* RUNDOWN / TIMELINE - FLEXBOX VERSION */
+        .rundown { background: #f5f5f5; padding: 70px 20px; }
+        .timeline { max-width: 700px; margin: 0 auto; }
+        .timeline-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+            position: relative;
+        }
+        .timeline-item .time {
+            width: 90px;
+            min-width: 90px;
+            text-align: right;
+            font-weight: 600;
+            color: #b76e79;
+            font-size: 0.9rem;
+            padding-top: 20px;
+            line-height: 1.3;
+            padding-right: 15px;
+        }
+        .timeline-item .timeline-line {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-width: 30px;
+            position: relative;
+        }
+        .timeline-item .dot {
+            width: 16px;
+            height: 16px;
+            background: #c9a961;
+            border: 3px solid white;
+            border-radius: 50%;
+            box-shadow: 0 0 0 2px #c9a961;
+            z-index: 2;
+            margin-top: 22px;
+            flex-shrink: 0;
+        }
+        .timeline-item:not(:last-child) .timeline-line::after {
+            content: '';
+            position: absolute;
+            top: 40px;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 3px;
+            background: #c9a961;
+        }
+        .timeline-item .content {
+            flex: 1;
+            background: white;
+            padding: 18px 22px;
+            border-radius: 12px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.06);
+            margin-left: 15px;
+        }
+        .timeline-item .content h3 {
+            color: #1a1a2e;
+            font-size: 1.05rem;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+        .timeline-item .content p {
+            color: #666;
+            font-size: 0.88rem;
+        }
+
+        /* BENEFIT */
+        .benefit { background: white; }
+        .benefit-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 25px; }
+        .benefit-card { background: #f9f5f0; padding: 30px 20px; border-radius: 15px; text-align: center; transition: all 0.3s; border: 2px solid transparent; }
+        .benefit-card:hover { border-color: #c9a961; transform: translateY(-5px); }
+        .benefit-card i { font-size: 2rem; color: #c9a961; margin-bottom: 15px; }
+        .benefit-card h3 { color: #1a1a2e; margin-bottom: 15px; }
+        .benefit-card ul { list-style: none; text-align: left; }
+        .benefit-card ul li { padding: 5px 0; font-size: 0.9rem; color: #666; position: relative; padding-left: 20px; }
+        .benefit-card ul li::before { content: '✓'; position: absolute; left: 0; color: #c9a961; font-weight: bold; }
+
+        /* RSVP */
+        .rsvp { background: #1a1a2e; color: white; }
+        .rsvp-sub { text-align: center; color: #cccccc; margin-bottom: 30px; }
+        .rsvp-form { max-width: 600px; margin: 0 auto; background: rgba(255,255,255,0.1); padding: 30px; border-radius: 15px; border: 1px solid rgba(255,255,255,0.2); }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        .form-group { margin-bottom: 15px; }
+        .form-group label { display: block; margin-bottom: 6px; font-size: 0.9rem; color: #dddddd; }
+        .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 10px 12px; border: 1px solid rgba(255,255,255,0.3); border-radius: 8px; background: rgba(255,255,255,0.1); color: white; font-family: 'Poppins', sans-serif; font-size: 0.9rem; }
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus { outline: none; border-color: #c9a961; }
+        .form-group select option { color: #333; background: white; }
+        .radio-group { display: flex; gap: 15px; flex-wrap: wrap; }
+        .radio-group label { display: flex; align-items: center; gap: 6px; cursor: pointer; padding: 8px 15px; border: 1px solid rgba(255,255,255,0.3); border-radius: 8px; transition: all 0.3s; }
+        .radio-group label:hover { border-color: #c9a961; }
+        .radio-group input[type="radio"] { accent-color: #c9a961; }
+        .btn-submit { width: 100%; padding: 14px; background: #c9a961; color: white; border: none; border-radius: 50px; font-family: 'Poppins', sans-serif; font-size: 1rem; font-weight: 600; cursor: pointer; transition: all 0.3s; }
+        .btn-submit:hover { background: #b76e79; transform: translateY(-2px); }
+        .rsvp-success { text-align: center; padding: 30px; }
+        .rsvp-success i { font-size: 3rem; color: #4CAF50; margin-bottom: 10px; }
+        .rsvp-success h3 { color: white; margin-bottom: 10px; }
+        .rsvp-success p { color: #cccccc; }
+
+        /* FOOTER */
+        footer { background: #1a1a2e; color: white; text-align: center; padding: 40px 20px; border-top: 1px solid #333; }
+        footer p { color: #cccccc; margin-bottom: 5px; }
+        footer h3 { font-family: 'Playfair Display', serif; color: #c9a961; margin: 10px 0; }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .guest-name { font-size: 1.8rem; }
+            .event-title { font-size: 1.5rem; }
+            .section-title { font-size: 1.6rem; }
+            .form-row { grid-template-columns: 1fr; }
+            .radio-group { flex-direction: column; }
+            .timeline-item .time { width: 80px; min-width: 80px; font-size: 0.85rem; }
+        }
+        @media (max-width: 480px) {
+            .guest-name { font-size: 1.4rem; }
+            .event-title { font-size: 1.2rem; }
+            .rsvp-form { padding: 20px; }
+            .timeline-item { flex-wrap: wrap; }
+            .timeline-item .time {
+                width: 100%;
+                text-align: left;
+                padding-top: 0;
+                padding-right: 0;
+                margin-bottom: 8px;
+                font-size: 0.85rem;
+            }
+            .timeline-item .timeline-line { margin-top: 5px; }
+            .timeline-item .content { margin-left: 10px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-content">
+            <p class="hero-subtitle">Dengan hormat, kami mengundang</p>
+            <h1 class="guest-name" id="guestName">Bapak/Ibu Tamu Undangan</h1>
+            <p class="guest-instansi" id="guestInstansi"></p>
+            <p class="guest-category" id="guestCategory"></p>
+            <div class="divider"><span></span><i class="fas fa-graduation-cap"></i><span></span></div>
+            <h2 class="event-title">Edu Fair & Career Day 2026</h2>
+            <p class="event-theme">"Membangun Generasi Emas: Kolaborasi Pendidikan & Industri untuk Masa Depan Gemilang"</p>
+            <a href="#detail" class="btn-scroll"><i class="fas fa-chevron-down"></i> Lihat Detail</a>
+        </div>
+    </section>
+
+    <!-- DETAIL ACARA -->
+    <section class="detail" id="detail">
+        <div class="container">
+            <h2 class="section-title">Detail Acara</h2>
+            <div class="info-cards">
+                <div class="info-card"><i class="fas fa-calendar-alt"></i><h3>Tanggal</h3><p>Sabtu, 28 November 2026</p></div>
+                <div class="info-card"><i class="fas fa-clock"></i><h3>Waktu</h3><p>08.00 - 16.00 WIB</p></div>
+                <div class="info-card"><i class="fas fa-map-marker-alt"></i><h3>Tempat</h3><p>SMK Negeri 6<br>Kota Tangerang Selatan</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LOKASI -->
+    <section class="lokasi">
+        <div class="container">
+            <h2 class="section-title">Lokasi Acara</h2>
+            <div class="map-container">
+                <iframe src="https://maps.google.com/maps?q=SMK+Negeri+6+Tangerang+Selatan&t=&z=15&ie=UTF8&iwloc=&output=embed" width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+            <a href="https://www.google.com/maps/search/?api=1&query=SMK+Negeri+6+Kota+Tangerang+Selatan" target="_blank" class="btn-map"><i class="fas fa-directions"></i> Buka Google Maps</a>
+        </div>
+    </section>
+
+    <!-- RUNDOWN -->
+    <section class="rundown">
+        <div class="container">
+            <h2 class="section-title">Rundown Acara</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="time">08.00 -<br>08.30</div>
+                    <div class="timeline-line"><div class="dot"></div></div>
+                    <div class="content"><h3>Registrasi</h3><p>Registrasi ulang peserta</p></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time">08.30 -<br>09.00</div>
+                    <div class="timeline-line"><div class="dot"></div></div>
+                    <div class="content"><h3>Pembukaan</h3><p>Sambutan Kepala Sekolah</p></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time">09.00 -<br>10.30</div>
+                    <div class="timeline-line"><div class="dot"></div></div>
+                    <div class="content"><h3>Keynote Speaker</h3><p>Tren pendidikan & karir</p></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time">10.30 -<br>12.00</div>
+                    <div class="timeline-line"><div class="dot"></div></div>
+                    <div class="content"><h3>Panel Discussion</h3><p>Diskusi universitas & industri</p></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time">12.00 -<br>13.00</div>
+                    <div class="timeline-line"><div class="dot"></div></div>
+                    <div class="content"><h3>Ishoma</h3><p>Istirahat, Sholat, Makan</p></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time">13.00 -<br>15.00</div>
+                    <div class="timeline-line"><div class="dot"></div></div>
+                    <div class="content"><h3>Expo Booth</h3><p>Kunjungan booth</p></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time">15.00 -<br>16.00</div>
+                    <div class="timeline-line"><div class="dot"></div></div>
+                    <div class="content"><h3>Doorprize & Penutup</h3><p>Pengundian & foto bersama</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BENEFIT BOOTH -->
+    <section class="benefit">
+        <div class="container">
+            <h2 class="section-title">Benefit Booth</h2>
+            <div class="benefit-grid">
+                <div class="benefit-card"><i class="fas fa-university"></i><h3>Booth Universitas</h3><ul><li>Info beasiswa & program studi</li><li>Konsultasi dengan dosen</li><li>Free merchandise</li><li>Tes minat bakat gratis</li></ul></div>
+                <div class="benefit-card"><i class="fas fa-briefcase"></i><h3>Booth Perusahaan</h3><ul><li>Info lowongan kerja & magang</li><li>Mock interview session</li><li>CV review gratis</li><li>Goodie bag eksklusif</li></ul></div>
+                <div class="benefit-card"><i class="fas fa-users"></i><h3>Networking</h3><ul><li>Koneksi dengan profesional</li><li>Alumni sharing session</li><li>Business card exchange</li><li>LinkedIn networking</li></ul></div>
+                <div class="benefit-card"><i class="fas fa-trophy"></i><h3>Doorprize</h3><ul><li>Laptop & gadget terbaru</li><li>Voucher belanja</li><li>Beasiswa pendidikan</li><li>Paket wisata</li></ul></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RSVP -->
+    <section class="rsvp" id="rsvp">
+        <div class="container">
+            <h2 class="section-title light">Konfirmasi Kehadiran</h2>
+            <p class="rsvp-sub">Mohon konfirmasi sebelum 25 November 2026</p>
+            <form class="rsvp-form" id="rsvpForm">
+                <div class="form-row">
+                    <div class="form-group"><label>Nama Lengkap</label><input type="text" id="nama" required></div>
+                    <div class="form-group"><label>Instansi</label><input type="text" id="instansi" required></div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group"><label>Kategori</label><select id="kategori" required><option value="">-- Pilih --</option><option value="Universitas">Universitas</option><option value="Perusahaan">Perusahaan</option><option value="Alumni">Alumni</option><option value="Lainnya">Lainnya</option></select></div>
+                    <div class="form-group"><label>Jumlah Orang</label><input type="number" id="jumlah" min="1" max="5" value="1" required></div>
+                </div>
+                <div class="form-group"><label>Status Kehadiran</label><div class="radio-group"><label><input type="radio" name="kehadiran" value="Hadir" required> Hadir</label><label><input type="radio" name="kehadiran" value="Tidak Hadir"> Tidak Hadir</label><label><input type="radio" name="kehadiran" value="Masih Ragu"> Masih Ragu</label></div></div>
+                <div class="form-group"><label>Catatan</label><textarea id="catatan" rows="3"></textarea></div>
+                <button type="submit" class="btn-submit">Kirim Konfirmasi</button>
+            </form>
+            <div class="rsvp-success" id="rsvpSuccess" style="display:none;"><i class="fas fa-check-circle"></i><h3>Terima Kasih!</h3><p>Konfirmasi berhasil dikirim.</p></div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>Hormat Kami,</p>
+        <h3>Panitia Edu Fair & Career Day 2026</h3>
+        <p>SMK Negeri 6 Kota Tangerang Selatan</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const toParam = urlParams.get('to');
+            const instansiParam = urlParams.get('instansi');
+            const kategoriParam = urlParams.get('kategori');
+            const guestNameEl = document.getElementById('guestName');
+            const guestInstansiEl = document.getElementById('guestInstansi');
+            const guestCategoryEl = document.getElementById('guestCategory');
+            if (toParam) guestNameEl.textContent = decodeURIComponent(toParam.replace(/\+/g, ' '));
+            if (instansiParam) guestInstansiEl.textContent = decodeURIComponent(instansiParam.replace(/\+/g, ' '));
+            if (kategoriParam) {
+                const k = decodeURIComponent(kategoriParam.replace(/\+/g, ' '));
+                const label = { Universitas: 'Perwakilan Universitas', Perusahaan: 'Perusahaan Mitra', Alumni: 'Alumni' }[k] || k;
+                guestCategoryEl.textContent = label;
+            }
+            const rsvpForm = document.getElementById('rsvpForm');
+            const rsvpSuccess = document.getElementById('rsvpSuccess');
+            if (rsvpForm) {
+                rsvpForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    const kehadiran = document.querySelector('input[name="kehadiran"]:checked');
+                    if (!kehadiran) { alert('Pilih status kehadiran!'); return; }
+                    const data = { nama: document.getElementById('nama').value, instansi: document.getElementById('instansi').value, kategori: document.getElementById('kategori').value, jumlah: document.getElementById('jumlah').value, kehadiran: kehadiran.value, catatan: document.getElementById('catatan').value, tanggal: new Date().toLocaleString('id-ID') };
+                    const all = JSON.parse(localStorage.getItem('rsvp_data') || '[]');
+                    all.push(data);
+                    localStorage.setItem('rsvp_data', JSON.stringify(all));
+                    rsvpForm.style.display = 'none';
+                    rsvpSuccess.style.display = 'block';
+                });
+            }
+            document.querySelectorAll('a[href^="#"]').forEach(a => {
+                a.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) target.scrollIntoView({ behavior: 'smooth' });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
